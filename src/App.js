@@ -94,7 +94,7 @@ export default function App() {
         {/* Currently bill */}
         <div className="right">
           <Racun
-            racun={trenutniRacun}
+            trenutniRacun={trenutniRacun}
             onZavrsiKupovinu={handleZavrsiKupovinu}
           />
         </div>
