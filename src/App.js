@@ -5,9 +5,9 @@ import IstorijaRacuna from "./IstorijaRacuna";
 import "./App.css"; //
 
 const Artikli = [
-  { Id: 1, Ime: "Majonez", Cena: 120 },
-  { Id: 2, Ime: "Kečap", Cena: 100 },
-  { Id: 3, Ime: "Hleb", Cena: 60 },
+  { Id: 1, Ime: "Belstaff SIGNATURE Majica", Cena: 11000 },
+  { Id: 2, Ime: "Belstaff Cailin Cashmere Jumper", Cena: 42000 },
+  { Id: 3, Ime: "Belstaff Women's Base Layer Merino", Cena: 12000 },
 ];
 
 export default function App() {

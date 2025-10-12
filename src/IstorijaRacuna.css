@@ -1,0 +1,40 @@
+.istorija-container {
+  background-color: #f8f8f8; /* svetla, elegantna pozadina */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  font-family: "Arial", sans-serif;
+  margin-top: 20px;
+  width: 100%; /* zauzima ceo prostor roditeljskog kontejnera */
+  box-sizing: border-box;
+}
+
+.istorija-container h2 {
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.istorija-container .racun-item {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.1s ease;
+}
+
+.istorija-container .racun-item:hover {
+  transform: scale(1.01);
+}
+
+.istorija-container .racun-info {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}

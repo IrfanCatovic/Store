@@ -34,7 +34,7 @@
 }
 
 .racun-container li button {
-  background-color: #e53935; /* crveno dugme za uklanjanje */
+  background-color: #e53935;
   color: white;
   border: none;
   border-radius: 6px;
@@ -58,7 +58,7 @@
 }
 
 .racun-container .zavrsi-button {
-  background-color: #130000; /* plavo dugme za završetak kupovine */
+  background-color: #130000;
   color: white;
   border: none;
   border-radius: 8px;
