@@ -22,6 +22,8 @@ const Artikli = [
 export default function App() {
   const [listaArtikala, setListaArtikala] = useState(Artikli);
   const [artikal, setArtikal] = useState({ Ime: "", Cena: "" });
+  const [trenutniRacun, setTrenutniRacun] = useState([]);
+  const [istorijaRacuna, setIstorijaRacuna] = useState([]);
 
   function handleAddItem(e) {
     e.preventDefault();
@@ -30,15 +32,18 @@ export default function App() {
       alert("Unesite Ime i cenu artikla");
       return;
     }
-
     const noviArtikal = {
       Id: listaArtikala.length + 1,
       Ime: artikal.Ime,
       Cena: artikal.Cena,
     };
-
     setListaArtikala([...listaArtikala, noviArtikal]);
     setArtikal({ Ime: "", Cena: "" });
+  }
+
+  function handleDodaj(artikal) {
+    setTrenutniRacun((prev) => [...prev, artikal]);
+    console.log("Dodato u račun:", artikal);
   }
   return (
     <div>
@@ -57,11 +62,13 @@ export default function App() {
         />
         <button type="submit">Dodaj</button>
       </form>
+      <h2>🛒 Artikli u ponudi:</h2>
       {listaArtikala.map((a) => (
         <li key={a.Id}>
-          <Artikal ime={a.Ime} cena={a.Cena} />
+          <Artikal ime={a.Ime} cena={a.Cena} onDodaj={() => handleDodaj(a)} />
         </li>
       ))}
+      <button>Idi na kasu</button>
     </div>
   );
 }
