@@ -2,7 +2,7 @@ import { useState } from "react";
 import Artikal from "./Artikal";
 import Racun from "./Racun";
 import IstorijaRacuna from "./IstorijaRacuna";
-import "./App.css"; // 👈 obavezno dodaj ovaj import za stilove
+import "./App.css"; //
 
 const Artikli = [
   { Id: 1, Ime: "Majonez", Cena: 120 },
@@ -16,7 +16,7 @@ export default function App() {
   const [trenutniRacun, setTrenutniRacun] = useState([]);
   const [istorijaRacuna, setIstorijaRacuna] = useState([]);
 
-  // ➕ Dodavanje novog artikla
+  // Add new item
   function handleAddItem(e) {
     e.preventDefault();
 
@@ -35,12 +35,15 @@ export default function App() {
     setArtikal({ Ime: "", Cena: "" });
   }
 
-  // ➕ Dodavanje artikla u trenutni račun
+  // Add item to cart
+  // We sent this fucntion to Artikal component like onAdd and after that recieve artikal
+  // to set it to list as new artikal
+  //later on we show that list on screen and calculate bill
   function handleDodaj(artikal) {
     setTrenutniRacun((prev) => [...prev, artikal]);
   }
 
-  // ✅ Završi kupovinu
+  // End with shopping
   function handleZavrsiKupovinu() {
     if (trenutniRacun.length === 0) return alert("Račun je prazan!");
     setIstorijaRacuna((prev) => [...prev, trenutniRacun]);
@@ -54,7 +57,7 @@ export default function App() {
       </header>
 
       <div className="main">
-        {/* LEVA STRANA */}
+        {/* Items */}
         <div className="left">
           <form onSubmit={handleAddItem} className="form">
             <input
@@ -73,6 +76,7 @@ export default function App() {
             <button type="submit">Dodaj artikal</button>
           </form>
 
+          {/* Current Items List  */}
           <h2>🛍️ Artikli u ponudi</h2>
           <ul className="artikli-list">
             {listaArtikala.map((a) => (
@@ -87,16 +91,16 @@ export default function App() {
           </ul>
         </div>
 
-        {/* DESNA STRANA */}
+        {/* Currently bill */}
         <div className="right">
           <Racun
-            trenutniRacun={trenutniRacun}
+            racun={trenutniRacun}
             onZavrsiKupovinu={handleZavrsiKupovinu}
           />
         </div>
       </div>
 
-      {/* ISTORIJA RAČUNA */}
+      {/* Bill history */}
       <div className="history">
         <IstorijaRacuna istorijaRacuna={istorijaRacuna} />
       </div>

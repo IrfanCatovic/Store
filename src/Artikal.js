@@ -8,7 +8,6 @@ export default function Artikal({ ime, cena, onDodaj }) {
           {ime}: {cena}{" "}
           <button onClick={() => onDodaj({ ime, cena })}>+</button>
         </p>
-        <p>Zavrsi kupovinu</p>
       </div>
     </>
   );
