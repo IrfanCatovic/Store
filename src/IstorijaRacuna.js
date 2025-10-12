@@ -1,11 +1,13 @@
 import "./IstorijaRacuna.css";
 
 export default function IstorijaRacuna({ istorijaRacuna }) {
+  let dnevniPazar = 0;
   return (
     <div className="istorija-container">
       <h2>Istorija računa</h2>
       {istorijaRacuna.map((racun, i) => {
         const ukupno = racun.reduce((s, a) => s + a.Cena, 0);
+        dnevniPazar = dnevniPazar + ukupno;
         return (
           <div className="racun-item" key={i}>
             <span className="racun-info">
@@ -14,6 +16,7 @@ export default function IstorijaRacuna({ istorijaRacuna }) {
           </div>
         );
       })}
+      Dnevni pazar: {dnevniPazar} RSD
     </div>
   );
 }
