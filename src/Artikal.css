@@ -2,13 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f5f5f5; /* svetlija pozadina */
+  background-color: #f5f5f5;
   padding: 12px 18px;
   margin-bottom: 10px;
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
   font-family: "Arial", sans-serif;
   transition: transform 0.1s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .artikal-container:hover {
@@ -33,7 +35,7 @@
 }
 
 .artikal-button {
-  background-color: #4caf50; /* modernija zelena */
+  background-color: #130000;
   color: white;
   border: none;
   border-radius: 6px;
@@ -41,11 +43,11 @@
   cursor: pointer;
   font-size: 14px;
   font-weight: bold;
-  margin-left: 15px; /* ODVOJENO OD TEKSTA */
+  margin-left: 15px;
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .artikal-button:hover {
-  background-color: #388e3c; /* tamnija zelena kada hover */
+  background-color: #00370d;
   transform: scale(1.05);
 }

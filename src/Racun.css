@@ -1,0 +1,76 @@
+.racun-container {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  font-family: "Arial", sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.racun-container h2 {
+  margin-top: 0;
+  color: #222;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.racun-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.racun-container li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.racun-container li button {
+  background-color: #e53935; /* crveno dugme za uklanjanje */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.racun-container li button:hover {
+  background-color: #b71c1c;
+  transform: scale(1.05);
+}
+
+.racun-container p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 12px;
+}
+
+.racun-container .zavrsi-button {
+  background-color: #130000; /* plavo dugme za završetak kupovine */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.racun-container .zavrsi-button:hover {
+  background-color: #00370d;
+  transform: scale(1.03);
+}
