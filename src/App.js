@@ -43,6 +43,10 @@ export default function App() {
     setTrenutniRacun((prev) => [...prev, artikal]);
   }
 
+  function handleUkloni(index) {
+    setTrenutniRacun((prev) => prev.filter((_, i) => i !== index));
+  }
+
   // End with shopping
   function handleZavrsiKupovinu() {
     if (trenutniRacun.length === 0) return alert("Račun je prazan!");
@@ -94,6 +98,7 @@ export default function App() {
         {/* Currently bill */}
         <div className="right">
           <Racun
+            onUkloni={handleUkloni}
             trenutniRacun={trenutniRacun}
             onZavrsiKupovinu={handleZavrsiKupovinu}
           />
