@@ -43,16 +43,25 @@ var artikli = []Artikal{
 		json.NewEncoder(w).Encode(map[string]string{"Status": "Racun dodat u istoriju"})
 	}
 
+	func getIstorijaRacuna(w http.ResponseWriter, r *http.Request){
+		w.Header().Set("Content-type", "application/json")
+		json.NewEncoder(w).Encode(istorijaRacuna)
+	}
+
+
+
 func main() {
 
 	//Check if server works
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintln(w, "Server Radi")
 	})
-	//create route for artikli
+	//return list of articles
 	http.HandleFunc("/artikli", getArtikli)
 	//create route for bill history
 	http.HandleFunc("/racuni", postRacun)
+	//return list of bill history
+	http.HandleFunc("/istorija", getIstorijaRacuna)
 
 	http.ListenAndServe(":8080", nil)
 }
