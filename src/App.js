@@ -47,9 +47,9 @@ export default function App() {
     }
 
     const noviArtikal = {
-      Id: listaArtikala.length + 1,
-      Ime: artikal.Ime,
-      Cena: Number(artikal.Cena),
+      id: listaArtikala.length + 1,
+      ime: artikal.Ime,
+      cena: Number(artikal.Cena),
     };
 
     setListaArtikala([...listaArtikala, noviArtikal]);
@@ -109,11 +109,11 @@ export default function App() {
           ) : (
             <ul className="artikli-list">
               {listaArtikala.map((a) => (
-                <li key={a.Id}>
+                <li key={a.id}>
                   {console.log(a)}
                   <Artikal
-                    ime={a.Ime}
-                    cena={a.Cena}
+                    ime={a.ime}
+                    cena={a.cena}
                     onDodaj={() => handleDodaj(a)}
                   />
                 </li>
