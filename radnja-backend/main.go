@@ -9,9 +9,9 @@ import (
 )
 
 type Artikal struct {
-	Id   int    `json:"id"`
-	Ime  string `json:"ime"`
-	Cena int    `json:"cena"`
+	Id   int    `json:"Id"`
+	Ime  string `json:"Ime"`
+	Cena int    `json:"Cena"`
 }
 
 var artikli = []Artikal{
