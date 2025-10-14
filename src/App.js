@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Artikal from "./Artikal";
 import Racun from "./Racun";
 import IstorijaRacuna from "./IstorijaRacuna";
@@ -11,10 +11,31 @@ import "./App.css"; //
 // ];
 
 export default function App() {
-  const [listaArtikala, setListaArtikala] = useState();
+  const [listaArtikala, setListaArtikala] = useState([]);
   const [artikal, setArtikal] = useState({ Ime: "", Cena: "" });
   const [trenutniRacun, setTrenutniRacun] = useState([]);
   const [istorijaRacuna, setIstorijaRacuna] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  //fetch items from backend
+  useEffect(() => {
+    async function fetchArtikli() {
+      try {
+        const res = await fetch("http://localhost:8080/artikli");
+        if (!res.ok) throw new Error("Greška pri dohvatanju artikala");
+
+        const data = await res.json();
+        console.log("Dobijeni artikli", data);
+        setListaArtikala(data);
+      } catch (error) {
+        console.error("Greška pri dohvatanju artikala:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchArtikli(); // ✅ poziv funkcije ide ovde, van nje
+  }, []);
 
   // Add new item
   function handleAddItem(e) {
@@ -41,6 +62,7 @@ export default function App() {
   //later on we show that list on screen and calculate bill
   function handleDodaj(artikal) {
     setTrenutniRacun((prev) => [...prev, artikal]);
+    console.log(trenutniRacun);
   }
 
   function handleUkloni(index) {
@@ -82,17 +104,22 @@ export default function App() {
 
           {/* Current Items List  */}
           <h2>🛍️ Artikli u ponudi</h2>
-          <ul className="artikli-list">
-            {listaArtikala.map((a) => (
-              <li key={a.Id}>
-                <Artikal
-                  ime={a.Ime}
-                  cena={a.Cena}
-                  onDodaj={() => handleDodaj(a)}
-                />
-              </li>
-            ))}
-          </ul>
+          {loading ? (
+            <p>Ucitavanje artikala...</p>
+          ) : (
+            <ul className="artikli-list">
+              {listaArtikala.map((a) => (
+                <li key={a.Id}>
+                  {console.log(a)}
+                  <Artikal
+                    ime={a.Ime}
+                    cena={a.Cena}
+                    onDodaj={() => handleDodaj(a)}
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         {/* Currently bill */}
