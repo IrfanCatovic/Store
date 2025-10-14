@@ -4,14 +4,14 @@ import Racun from "./Racun";
 import IstorijaRacuna from "./IstorijaRacuna";
 import "./App.css"; //
 
-const Artikli = [
-  { Id: 1, Ime: "Belstaff SIGNATURE Majica", Cena: 11000 },
-  { Id: 2, Ime: "Belstaff Cailin Cashmere Jumper", Cena: 42000 },
-  { Id: 3, Ime: "Belstaff Women's Base Layer Merino", Cena: 12000 },
-];
+// const Artikli = [
+//   { Id: 1, Ime: "Belstaff SIGNATURE Majica", Cena: 11000 },
+//   { Id: 2, Ime: "Belstaff Cailin Cashmere Jumper", Cena: 42000 },
+//   { Id: 3, Ime: "Belstaff Women's Base Layer Merino", Cena: 12000 },
+// ];
 
 export default function App() {
-  const [listaArtikala, setListaArtikala] = useState(Artikli);
+  const [listaArtikala, setListaArtikala] = useState();
   const [artikal, setArtikal] = useState({ Ime: "", Cena: "" });
   const [trenutniRacun, setTrenutniRacun] = useState([]);
   const [istorijaRacuna, setIstorijaRacuna] = useState([]);

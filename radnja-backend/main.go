@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 )
 
 	type Artikal struct {
@@ -38,14 +39,39 @@ var artikli = []Artikal{
 			return
 		}
 
+		
 		istorijaRacuna = append(istorijaRacuna, racun)
+		sacuvajIstoriju()
 		w.WriteHeader(http.StatusCreated)
 		json.NewEncoder(w).Encode(map[string]string{"Status": "Racun dodat u istoriju"})
 	}
 
+	//handler for get bill history 
 	func getIstorijaRacuna(w http.ResponseWriter, r *http.Request){
 		w.Header().Set("Content-type", "application/json")
 		json.NewEncoder(w).Encode(istorijaRacuna)
+	}
+
+	func sacuvajIstoriju(){
+		file, err := os.Create("istorija.json")
+		if err != nil{
+			fmt.Println("Greska pri kreiranju fajla:", err)
+			return
+		}
+		defer file.Close()
+
+		json.NewEncoder(file).Encode(istorijaRacuna)
+	}
+
+	func ucitajIstoriju(){
+		file, err := os.Open("istorija.json")
+		if err != nil{
+			fmt.Println("Greska pri otvaranju fajla:", err)
+			return
+		}
+		defer file.Close()
+
+		json.NewDecoder(file).Decode(&istorijaRacuna)
 	}
 
 
@@ -56,6 +82,8 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintln(w, "Server Radi")
 	})
+
+	ucitajIstoriju()
 	//return list of articles
 	http.HandleFunc("/artikli", getArtikli)
 	//create route for bill history
