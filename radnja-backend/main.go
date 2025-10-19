@@ -9,19 +9,20 @@ import (
 
 //CORS RESOLVE
 func enableCors(next http.Handler) http.Handler {
-	return http.HandleFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Acces-Cotnrol-Allow-Origin", "*")
-		w.Header().Set("Acces-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-		w.Header().Set("Acces-Control-Allow-Headers", "Content-Type, Authorization") 
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        w.Header().Set("Access-Control-Allow-Origin", "*")
+        w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+        w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
 
-		if r.Method == "OPTIONS" {
-			w.WritteHeader(http.SattusOK)
-			return
-		}
+        if r.Method == "OPTIONS" {
+            w.WriteHeader(http.StatusOK)
+            return
+        }
 
-		next.ServeHTTP(w, r)
-	})
+        next.ServeHTTP(w, r)
+    })
 }
+
 
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
