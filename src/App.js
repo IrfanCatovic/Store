@@ -51,7 +51,6 @@ export default function App() {
       Cena: Number(artikal.Cena),
       Kolicina: Number(artikal.Kolicina),
     };
-
     setListaArtikala([...listaArtikala, noviArtikal]);
     setArtikal({ Ime: "", Cena: "", Kolicina: 1 });
   }
@@ -62,7 +61,6 @@ export default function App() {
   //later on we show that list on screen and calculate bill
   function handleDodaj(artikal) {
     setTrenutniRacun((prev) => [...prev, artikal]);
-    console.log(trenutniRacun);
   }
 
   function handleUkloni(index) {
@@ -70,9 +68,20 @@ export default function App() {
   }
 
   // End with shopping
-  function handleZavrsiKupovinu() {
+  async function handleZavrsiKupovinu() {
     if (trenutniRacun.length === 0) return alert("Račun je prazan!");
+
     setIstorijaRacuna((prev) => [...prev, trenutniRacun]);
+
+    try {
+      await fetch("http://localhost:8080/racuni", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(trenutniRacun),
+      });
+    } catch (error) {
+      console.log("Greska pri slanju racuna", error);
+    }
     setTrenutniRacun([]);
   }
 
