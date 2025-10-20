@@ -12,7 +12,7 @@ import "./App.css"; //
 
 export default function App() {
   const [listaArtikala, setListaArtikala] = useState([]);
-  const [artikal, setArtikal] = useState({ Ime: "", Cena: "" });
+  const [artikal, setArtikal] = useState({ Ime: "", Cena: "", Kolicina: 1 });
   const [trenutniRacun, setTrenutniRacun] = useState([]);
   const [istorijaRacuna, setIstorijaRacuna] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -45,15 +45,15 @@ export default function App() {
       alert("Unesite ime i cenu artikla");
       return;
     }
-
     const noviArtikal = {
       Id: listaArtikala.length + 1,
       Ime: artikal.Ime,
       Cena: Number(artikal.Cena),
+      Kolicina: Number(artikal.Kolicina),
     };
 
     setListaArtikala([...listaArtikala, noviArtikal]);
-    setArtikal({ Ime: "", Cena: "" });
+    setArtikal({ Ime: "", Cena: "", Kolicina: 1 });
   }
 
   // Add item to cart
@@ -99,6 +99,15 @@ export default function App() {
                 setArtikal({ ...artikal, Cena: Number(e.target.value) })
               }
             />
+
+            <input
+              value={artikal.Kolicina}
+              placeholder="Unesite kolicinu"
+              type="number"
+              onChange={(e) =>
+                setArtikal({ ...artikal, Kolicina: Number(e.target.value) })
+              }
+            />
             <button type="submit">Dodaj artikal</button>
           </form>
 
@@ -114,6 +123,7 @@ export default function App() {
                   <Artikal
                     ime={a.Ime}
                     cena={a.Cena}
+                    kolicina={a.Kolicina}
                     onDodaj={() => handleDodaj(a)}
                   />
                 </li>

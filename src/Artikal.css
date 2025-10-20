@@ -34,6 +34,12 @@
   margin-top: 2px;
 }
 
+.artikal-kolicina {
+  font-size: 14px;
+  color: #555;
+  margin-top: 4px;
+}
+
 .artikal-button {
   background-color: #130000;
   color: white;
